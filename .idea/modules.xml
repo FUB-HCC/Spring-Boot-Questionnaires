@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/core.iml" filepath="$PROJECT_DIR$/.idea/modules/core/core.iml" group="core" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/core_main.iml" filepath="$PROJECT_DIR$/.idea/modules/core/core_main.iml" group="core" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/core_test.iml" filepath="$PROJECT_DIR$/.idea/modules/core/core_test.iml" group="core" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/demo/demo.iml" filepath="$PROJECT_DIR$/.idea/modules/demo/demo.iml" group="demo" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/demo/demo_main.iml" filepath="$PROJECT_DIR$/.idea/modules/demo/demo_main.iml" group="demo" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/demo/demo_test.iml" filepath="$PROJECT_DIR$/.idea/modules/demo/demo_test.iml" group="demo" />
+      <module fileurl="file://$PROJECT_DIR$/spring-boot-questionnaires.iml" filepath="$PROJECT_DIR$/spring-boot-questionnaires.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/spring-boot-questionnaires_main.iml" filepath="$PROJECT_DIR$/.idea/modules/spring-boot-questionnaires_main.iml" group="spring-boot-questionnaires" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/spring-boot-questionnaires_test.iml" filepath="$PROJECT_DIR$/.idea/modules/spring-boot-questionnaires_test.iml" group="spring-boot-questionnaires" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/web/web.iml" filepath="$PROJECT_DIR$/.idea/modules/web/web.iml" group="web" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/web/web_main.iml" filepath="$PROJECT_DIR$/.idea/modules/web/web_main.iml" group="web" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/web/web_test.iml" filepath="$PROJECT_DIR$/.idea/modules/web/web_test.iml" group="web" />
+    </modules>
+  </component>
+</project>

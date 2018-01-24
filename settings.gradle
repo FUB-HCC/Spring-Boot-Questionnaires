@@ -1,0 +1,5 @@
+rootProject.name = 'spring-boot-questionnaires'
+include 'core'
+include 'web'
+include 'demo'
+
