@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="de" xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="content">
+    <h4 th:text="${question.questionText}">This is a question</h4>
+    <small th:if="${question.additionalInfo}" th:text="${question.additionalInfo}">Additional Info</small>
+
+    <div class="form-check" th:each="choice : ${question.choices}">
+        <label class="form-check-label">
+            <input class="form-check-input" type="radio"
+                   th:name="${'answer-' + question.id} + '-' + ${question.class.simpleName}"
+                   th:value="${choice.id}"
+                   th:checked="${choice.selected}"
+                   th:text="${choice.label}">
+        </label>
+    </div>
+</div>
+</body>
