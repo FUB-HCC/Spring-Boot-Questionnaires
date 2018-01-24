@@ -1,0 +1,13 @@
+.gradle
+.gradletasknamecache
+ gradle-app.setting
+!gradle-wrapper.jar
+/build/
+gradle/wrapper/gradle-wrapper.properties
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/dictionaries
+ out/
+.idea/**/gradle.xml
+.idea/**/libraries
+
