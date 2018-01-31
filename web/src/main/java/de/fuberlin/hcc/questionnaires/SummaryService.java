@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class Summary {
+public class SummaryService {
 
     private final QuestionnaireRepository  questionnaireRepository;
     private RatingRepository ratingRepository;
@@ -25,9 +25,9 @@ public class Summary {
 
 
     @Autowired
-    public Summary(RatingRepository ratingRepository,
-                   QuestionnaireRepository questionnaireRepository,
-                   AnswerService answerService) {
+    public SummaryService(RatingRepository ratingRepository,
+                          QuestionnaireRepository questionnaireRepository,
+                          AnswerService answerService) {
 
         this.ratingRepository = ratingRepository;
         this.questionnaireRepository = questionnaireRepository;

@@ -10,12 +10,12 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
-public class Edit {
+public class EditService {
 
 
     private AnswerSessionService answerSessionService;
 
-    public Edit(AnswerSessionService answerSessionService){
+    public EditService(AnswerSessionService answerSessionService){
         this.answerSessionService = answerSessionService;
     }
 

@@ -9,14 +9,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Service
-public class View{
+public class ViewService {
 
     private final QuestionnaireWithAnswersService questionnaireWithAnswersService;
     private final QuestionnaireRepository  questionnaireRepository;
 
     @Autowired
-    public View(QuestionnaireWithAnswersService  questionnaireWithAnswersService,
-                QuestionnaireRepository questionnaireRepository){
+    public ViewService(QuestionnaireWithAnswersService  questionnaireWithAnswersService,
+                       QuestionnaireRepository questionnaireRepository){
             this.questionnaireWithAnswersService =  questionnaireWithAnswersService;
             this.questionnaireRepository = questionnaireRepository;
     }
