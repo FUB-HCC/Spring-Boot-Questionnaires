@@ -3,7 +3,7 @@ package de.fuberlin.hcc.questionnaires.model;
 
 import de.fuberlin.hcc.questionnaires.model.singlechoice.ratingblock.ChoiceRow;
 
-public class ChoiceRowWithSummary {
+public class ChoiceRowWithSummary  extends QuestionsSummary {
     private final ChoiceRow choiceRow;
     private final RatingSummary ratingSummary;
 
