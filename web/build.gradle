@@ -1,9 +1,14 @@
 group 'de.fuberlin.hcc'
 version '1.0-SNAPSHOT'
 
+
+
 apply plugin: 'java'
 
+
+
 sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 repositories {
     mavenCentral()
