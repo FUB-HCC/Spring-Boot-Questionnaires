@@ -26,7 +26,7 @@ public class VideosController {
     }
 
 
-    @RequestMapping("/view/contextKey?={contextKey}&questionnaireId={questionnaireId}&userId={userId}")
+    @RequestMapping("/view?contextKey={contextKey}&questionnaireId={questionnaireId}&userId={userId}")
     public String showQuestionnaire(@PathVariable long contextKey,
                                     @PathVariable long questionnaireId,
                                     @PathVariable long userId,
@@ -34,8 +34,8 @@ public class VideosController {
 
         QuestionnaireWithAnswers questionnaireWithAnswers=
                 viewService.getQuestionnaireWithAnswers(questionnaireId,contextKey,userId);
-        model.addAttribute("questionnaireAndAnswers", questionnaireWithAnswers);
-        return "questionnaireWithAnswers";
+        model.addAttribute("questionnaire", questionnaireWithAnswers);
+        return "questionnaire";
     }
 
 }
