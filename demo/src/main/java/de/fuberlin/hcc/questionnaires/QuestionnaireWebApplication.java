@@ -18,10 +18,8 @@ public class QuestionnaireWebApplication {
     @Autowired
     public CommandLineRunner loadData(QuestionnaireRepository questionnaireRepository){
         return (args) -> {
-
                 DataLoader dataLoader = new DataLoader(questionnaireRepository);
                 dataLoader.createData();
-
         };
     }
 

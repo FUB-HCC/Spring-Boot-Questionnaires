@@ -9,8 +9,6 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/demo/demo_main.iml" filepath="$PROJECT_DIR$/.idea/modules/demo/demo_main.iml" group="demo" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/demo/demo_test.iml" filepath="$PROJECT_DIR$/.idea/modules/demo/demo_test.iml" group="demo" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/spring-boot-questionnaires.iml" filepath="$PROJECT_DIR$/.idea/modules/spring-boot-questionnaires.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/spring-boot-questionnaires_main.iml" filepath="$PROJECT_DIR$/.idea/modules/spring-boot-questionnaires_main.iml" group="spring-boot-questionnaires" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/spring-boot-questionnaires_test.iml" filepath="$PROJECT_DIR$/.idea/modules/spring-boot-questionnaires_test.iml" group="spring-boot-questionnaires" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/web/web.iml" filepath="$PROJECT_DIR$/.idea/modules/web/web.iml" group="web" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/web/web_main.iml" filepath="$PROJECT_DIR$/.idea/modules/web/web_main.iml" group="web" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/web/web_test.iml" filepath="$PROJECT_DIR$/.idea/modules/web/web_test.iml" group="web" />
