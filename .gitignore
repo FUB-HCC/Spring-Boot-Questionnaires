@@ -1,13 +1,13 @@
 # all intellij idea related files
-/.idea/**
+.idea/
 *.iws
 *.iml
 
 # IntelliJ
-out/
+**/out
 
 .gradle
-/build/
+**/build
 
 # Ignore Gradle GUI config
 gradle-app.setting
