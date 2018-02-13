@@ -1,0 +1,10 @@
+<div>
+    <!-- TODO how to put the right label here? -->
+    <h5>Feedback of the ideator-community</h5>
+    {{#each choiceRowWithSummaries}}
+        <b>{{rowLabel}}</b>
+        <span>{{avgRating}}</span>
+        <span>({{numRating}})</span>
+        <br/>
+    {{/each}}
+</div>

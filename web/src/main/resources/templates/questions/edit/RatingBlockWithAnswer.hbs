@@ -1,0 +1,44 @@
+<div class="form-group">
+    {{#assign "questionId"}}{{this.id}}{{/assign}}
+    {{#assign "questionType"}}{{this.type}}{{/assign}}
+
+    <h5>{{questionText}}</h5>
+    {{#if additionalInfo}}
+        <p class="sublabel">{{additionalInfo}}</p>
+    {{/if}}
+
+    <table class="radio-button-table table col-lg-10">
+        <thead>
+        <tr>
+            <th scope="col"></th>
+            {{#each this.columnLabels }}
+                <th scope="col">{{label}}</th>
+            {{/each}}
+        </tr>
+        </thead>
+        <tbody>
+        {{#each this.rows as |row|}}
+            <tr>
+                <th scope="row" class="table-row-title">{{row.rowLabel}}</th>
+                {{#each choices as |choice|}}
+                    <td>
+                        <!-- TODO label -->
+                        {{#if choice.selected}}
+                            <input type="radio"
+                                   name="{{stringFormat "answer-%s-%s-%s" questionId questionType row.id}}"
+                                   value="{{id}}"
+                                   checked="checked"
+                                   autocomplete="off">
+                        {{else}}
+                            <input type="radio"
+                                   name="{{stringFormat "answer-%s-%s-%s" questionId questionType row.id}}"
+                                   value="{{id}}"
+                                   autocomplete="off">
+                        {{/if}}
+                    </td>
+                {{/each}}
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</div>

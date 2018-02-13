@@ -1,0 +1,32 @@
+<div class="form-group">
+    {{#assign "questionId"}}{{this.id}}{{/assign}}
+    {{#assign "questionType"}}{{this.type}}{{/assign}}
+
+    <h5>{{questionText}}</h5>
+    {{#if additionalInfo}}
+        <p class="sublabel">{{additionalInfo}}</p>
+    {{/if}}
+
+    <div class="rate-multiple-options row">
+        <ul>
+            {{#each this.choices }}
+                <li class="col-lg-12">
+                    <div class="input-group">
+                        <label>
+                            {{#if selected}}
+                                <input type="radio"
+                                       name="{{stringFormat "answer-%s-%s" questionId questionType}}"
+                                       checked="checked"
+                                       value="{{id}}">
+                            {{else}}
+                                <input type="radio"
+                                       name="{{stringFormat "answer-%s-%s" questionId questionType}}"
+                                       value="{{id}}">
+                            {{/if}}
+                            {{label}}</label>
+                    </div>
+                </li>
+            {{/each}}
+        </ul>
+    </div>
+</div>

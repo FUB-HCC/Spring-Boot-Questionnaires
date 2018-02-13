@@ -1,0 +1,14 @@
+{{#partial "title"}}
+    <title>Videos Overview</title>
+{{/partial}}
+{{#partial "content"}}
+    <h1>Videos</h1>
+    {{#each videos}}
+        <b>{{title}}</b>
+        <p>{{description}}</p>
+
+    {{/each}}
+{{/partial}}
+
+{{> layout}}
+

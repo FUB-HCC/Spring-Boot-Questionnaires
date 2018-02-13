@@ -27,8 +27,6 @@ dependencies {
     }
     compile('org.springframework.boot:spring-boot-starter-data-jpa')
     compile('com.h2database:h2')
-    compile("org.thymeleaf:thymeleaf-spring4")
-    compile("nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect")
     testCompile group: 'junit', name: 'junit', version: '4.12'
 
 }

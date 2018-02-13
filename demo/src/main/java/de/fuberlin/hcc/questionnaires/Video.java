@@ -13,10 +13,10 @@ public class Video {
     private Long id;
 
     @Column(name = "title", length = 200, nullable = false)
-    private String name;
+    private String title;
 
 
-    @Column(name = "description", length = 500, nullable = false)
+    @Column(name = "description", length = 1000, nullable = false)
     private String description;
 
     public Long getId() {
@@ -27,12 +27,12 @@ public class Video {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String name) {
+        this.title = title;
     }
 
     public String getDescription() {

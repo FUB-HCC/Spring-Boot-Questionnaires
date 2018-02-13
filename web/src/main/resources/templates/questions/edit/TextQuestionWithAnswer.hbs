@@ -1,0 +1,15 @@
+<div class="form-group">
+    <h5>{{questionText}}</h5>
+    {{#if additionalInfo}}
+        <p class="sublabel">{{additionalInfo}}</p>
+    {{/if}}
+
+    <!-- TODO label -->
+    <!-- <label class="fld-label actAsDiv clearfix grpelem" id="u14450-4"
+           th:for="${'answer-' + question.id} + '-' + ${question.class.simpleName}"> -->
+    <textarea id="{{stringFormat "answer-%s-%s" id type}}"
+              name="{{stringFormat "answer-%s-%s" id type}}"
+              rows="4" cols="50"
+              class="wrapped-input" tabindex="3"
+              placeholder="Please insert...">{{answerText}}</textarea>
+</div>

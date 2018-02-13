@@ -7,22 +7,35 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 @Controller
 public class VideosController {
 
 
     private EditService editService;
-    private SummaryService summaryService;
+    private QuestionnaireSummaryService summaryService;
     private ViewService viewService;
+    private VideoRepository videoRepository;
 
     @Autowired
     public VideosController(EditService editService,
-                            SummaryService summaryService,
-                            ViewService viewService){
+                            QuestionnaireSummaryService summaryService,
+                            ViewService viewService,
+                            VideoRepository videoRepository){
         this.editService = editService;
         this.summaryService = summaryService;
         this.viewService = viewService;
+        this.videoRepository = videoRepository;
 
+    }
+
+    @RequestMapping("/")
+    public String showVideos(Model model){
+        List<Video> videos = (List<Video> )videoRepository.findAll();
+
+        model.addAttribute("videos", videos);
+        return  "main";
     }
 
 
