@@ -9,12 +9,25 @@
         <title>Videos</title>
     {{/block}}
 
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    {{#block "css-includes"}}
+
+    {{/block}}
+
+    {{#block "js-head-includes"}}
+
+    {{/block}}
+
 </head>
 <body>
 {{#block "content"}}
     <span>This is the layout. This shouldn't be visible.</span>
 {{/block}}
-
+{{#block "js-includes"}}
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/popper.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+{{/block}}
 
 </body>
 </html>
