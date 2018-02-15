@@ -1,0 +1,33 @@
+<form action="rate" method="post">
+    <div class="floating-panel-body">
+        <div class="col-lg-8 mx-auto no-padding">
+            <p>Please comment on the video</p>
+            {{#each questionnaire.questions}}
+                <div class="form-group">
+                    {{> (stringFormat "questions/edit/%s" this.type) }}
+                </div>
+            {{/each}}
+        </div>
+    </div>
+
+    <input type="hidden"
+           name="uId"
+           value="{{uId}}">
+
+    <input type="hidden"
+           name="qId"
+           value="{{qId}}">
+
+    <input type="hidden"
+           name="videoId"
+           value="{{videoId}}">
+
+    <div class="row no-margin">
+        <div class="col center-text-btn no-padding">
+            <a class="cancel-btn" href="">CANCEL</a>
+        </div>
+        <div class="col center-text-btn no-padding">
+            <button type="submit" class="submit-btn">SUBMIT</button>
+        </div>
+    </div>
+</form>

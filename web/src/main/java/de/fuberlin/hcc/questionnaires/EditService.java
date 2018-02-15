@@ -21,8 +21,8 @@ public class EditService {
 
 
 
-    public AnswerSession update(long  questionnaireId,
-                                long contextId, long userId,
+    public AnswerSession update(Long  questionnaireId,
+                                long userId, long contextId,
                                 HttpServletRequest request){
 
         Map<String, String[]> allRequestParams = request.getParameterMap();

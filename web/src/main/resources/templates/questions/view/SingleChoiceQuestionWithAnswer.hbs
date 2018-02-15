@@ -1,31 +1,29 @@
 <h5>{{questionText}}</h5>
-<ul>
-    <li>Lorem ipsum dolor sit amet</li>
-    <li>consetetur sadipscing elitr, sed</li>
-    <li>diam nonumy eirmod tempor</li>
-    <li>invidunt ut labore et dolore magna</li>
-</ul>
+{{#if additionalInfo}}
+    <small>{{additionalInfo}}</small>
+{{/if}}
 
-<!-- TODO
-<!DOCTYPE html>
-<html lang="de" xmlns:th="http://www.thymeleaf.org">
-<body>
-<div th:fragment="content">
-    <h4 th:text="${question.questionText}">This is a question</h4>
-    <small th:if="${question.additionalInfo}" th:text="${question.additionalInfo}">Additional Info</small>
+{{#if answered}}
+    {{#assign "questionId"}}{{this.id}}{{/assign}}
+    {{#assign "questionType"}}{{this.type}}{{/assign}}
 
-    <div class="form-check" th:each="choice : ${question.choices}" th:if="${question.answered}">
-        <label class="form-check-label">
-            <input class="form-check-input" type="radio"
-                   disabled="disabled"
-                   th:name="${'answer-' + question.id} + '-choice'"
-                   th:value="${choice.id}"
-                   th:checked="${choice.selected}"
-                   th:text="${choice.label}">
-        </label>
-    </div>
-    <div th:unless="${question.answered}">
-        <p>No answer given.</p>
-    </div>
-</div>
-</body>-->
+    {{#each choices}}
+        <div class="form-check">
+            <label class="form-check-label">
+                {{#if selected}}
+                    <input class="form-check-input" type="radio"
+                           disabled="disabled"
+                           checked
+                           name="{{stringFormat "answer-%s-choice" questionId}}"
+                           value="{{id}}">{{label}}</label>
+                {{else}}
+                    <input class="form-check-input" type="radio"
+                           disabled="disabled"
+                           name="{{stringFormat "answer-%s-choice" questionId}}"
+                           value="{{id}}">{{label}}</label>
+                {{/if}}
+        </div>
+    {{/each}}
+{{else}}
+    <p>No answer given.</p>
+{{/if}}

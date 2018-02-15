@@ -1,0 +1,8 @@
+<div id="hidden-info" class="collapse multi-collapse col-lg-9 offset-lg-3">
+    {{#each questionnaire.questions}}
+        <div class="more-info-paragraph col-lg-11">
+            {{> (stringFormat "questions/view/%s" this.type) }}
+        </div>
+    {{/each}}
+
+</div>

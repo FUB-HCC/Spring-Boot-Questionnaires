@@ -2,7 +2,15 @@
     <title>Videos Overview</title>
 {{/partial}}
 {{#partial "content"}}
-    {{> components/video videos}}
+    {{> components/menu}}
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="home">{{> videos ratedVideos  action='view'}}</div>
+        <div role="tabpanel" class="tab-pane" id="rate">{{> videos notRatedVideos  action='rate'}}</div>
+        <div role="tabpanel" class="tab-pane" id="summary">Summary</div>
+    </div>
+
 {{/partial}}
 
 {{> layout}}

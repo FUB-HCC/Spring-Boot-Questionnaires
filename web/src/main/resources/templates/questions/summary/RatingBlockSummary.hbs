@@ -1,10 +1,18 @@
 <div>
-    <!-- TODO how to put the right label here? -->
+    <!-- TODO how to put the right heading here? -->
     <h5>Feedback of the ideator-community</h5>
     {{#each choiceRowWithSummaries}}
-        <b>{{rowLabel}}</b>
-        <span>{{avgRating}}</span>
-        <span>({{numRating}})</span>
-        <br/>
+        <div class="row rating-block-row">
+            <div class="col-4">
+                <p>{{rowLabel}}</p>
+            </div>
+            <div class="col-1">
+                <div class="arrow-right"></div>
+            </div>
+            <div class="col-3">
+                <p><span>{{avgRating}}</span>
+                <span>({{numRating}})</span></p>
+            </div>
+        </div>
     {{/each}}
 </div>

@@ -12,6 +12,11 @@ public class Video {
     @Column(name = "video_id")
     private Long id;
 
+
+
+    //@ManyToOne(optional = false, cascade = CascadeType.ALL)
+   // private User creator;
+
     @Column(name = "title", length = 200, nullable = false)
     private String title;
 
@@ -42,5 +47,13 @@ public class Video {
     public void setDescription(String description) {
         this.description = description;
     }
+/*
+   public User getCreator() {
+        return creator;
+    }
+
+    public void setCreator(User creator) {
+        this.creator = creator;
+    }*/
 
 }

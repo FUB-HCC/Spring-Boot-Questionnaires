@@ -1,39 +1,44 @@
 <h5>{{questionText}}</h5>
-<p>TODO</p>
-<!--<!DOCTYPE html>
-<html lang="de" xmlns:th="http://www.thymeleaf.org">
-<body>
-<div th:fragment="content">
-    <h4 th:text="${question.questionText}">This is a question</h4>
-    <small th:if="${question.additionalInfo}" th:text="${question.additionalInfo}">Additional Info</small>
+{{#if additionalInfo}}
+    <small>{{additionalInfo}}</small>
+{{/if}}
 
-    <div th:if="${question.answered}" class="container">
-        <div class="row">
-            <div class="col ">
-
-            </div>
-
-            <div th:each="columnLabel : ${question.columnLabels}" class="col">
-                <span th:text="${columnLabel.label}">Column Label</span>
-            </div>
-        </div>
-        <div th:each="row : ${question.rows}" class="row">
-            <div class="col">
-                <span th:text="${row.rowLabel}">Novelty of the idea</span>
-            </div>
-            <div class="col" th:each="choice : ${row.choices}">
-                <label class="form-check-label">
-                    <input class="form-check-input" type="radio"
-                           disabled="disabled"
-                           th:name="'answer-' + ${question.id} + '-row-' + ${row.id} + '-choice'"
-                           th:checked="${choice.selected}">
-                </label>
-            </div>
-        </div>
-    </div>
-    <div th:unless="${question.answered}">
-        <p>No answer given.</p>
-    </div>
-</div>
-</body>
--->
+<!-- TODO -->
+{{#if answered}}
+    <table class="radio-button-table table col-lg-10">
+        <thead>
+        <tr>
+            <th scope="col"></th>
+            {{#each this.columnLabels }}
+                <th scope="col">{{label}}</th>
+            {{/each}}
+        </tr>
+        </thead>
+        <tbody>
+        {{#each this.rows as |row|}}
+            <tr>
+                <th scope="row" class="table-row-title">{{row.rowLabel}}</th>
+                {{#each choices as |choice|}}
+                    <td>
+                        <!-- TODO label -->
+                        {{#if choice.selected}}
+                            <input type="radio"
+                                   name="{{stringFormat "answer-%s-%s-%s" questionId questionType row.id}}"
+                                   value="{{id}}"
+                                   checked="checked"
+                                   disabled>
+                        {{else}}
+                            <input type="radio"
+                                   name="{{stringFormat "answer-%s-%s-%s" questionId questionType row.id}}"
+                                   value="{{id}}"
+                                   disabled>
+                        {{/if}}
+                    </td>
+                {{/each}}
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+{{else}}
+    <p>No answer given.</p>
+{{/if}}

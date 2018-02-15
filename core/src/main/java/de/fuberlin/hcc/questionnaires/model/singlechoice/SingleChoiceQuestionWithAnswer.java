@@ -36,4 +36,9 @@ public class SingleChoiceQuestionWithAnswer extends QuestionWithAnswer {
         return hasAnswer;
     }
 
+    @Override
+    public String getType() {
+        return this.getClass().getSimpleName();
+    }
+
 }

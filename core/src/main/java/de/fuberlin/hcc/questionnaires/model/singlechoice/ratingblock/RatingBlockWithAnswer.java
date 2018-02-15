@@ -43,5 +43,10 @@ public class RatingBlockWithAnswer extends QuestionWithAnswer {
         return rows;
     }
 
+    @Override
+    public String getType() {
+        return this.getClass().getSimpleName();
+    }
+
 
 }

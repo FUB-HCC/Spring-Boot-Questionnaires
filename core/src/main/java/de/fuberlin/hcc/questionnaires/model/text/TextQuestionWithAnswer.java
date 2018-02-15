@@ -17,6 +17,11 @@ public class TextQuestionWithAnswer extends QuestionWithAnswer {
     }
 
     @Override
+    public String getType() {
+        return this.getClass().getSimpleName();
+    }
+
+    @Override
     public boolean isAnswered() {
         return isNotBlank(answerText);
     }
