@@ -1,6 +1,7 @@
 package de.fuberlin.hcc.questionnaires;
 
 
+import de.fuberlin.hcc.questionnaires.model.QuestionnaireSummary;
 import de.fuberlin.hcc.questionnaires.model.QuestionnaireWithAnswers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -45,6 +46,8 @@ public class VideosController {
 
         List<Video> ratedVideos = (List<Video> )videoRepository.findRatedVideos(questionnaireId,userId);
         model.addAttribute("ratedVideos", ratedVideos);
+        List<Video> allVideos = (List<Video>) videoRepository.findAll();
+        model.addAttribute("allVideos", allVideos);
 
       if(ratedVideos == null){
           model.addAttribute("notRatedVideos", videoRepository.findAll());
@@ -86,6 +89,23 @@ public class VideosController {
         model.addAttribute("uId", uId);
         model.addAttribute("videoId", videoId);
         return "view-one";
+
+    }
+
+
+    @RequestMapping("/summary")
+    public String viewVideoSummary(@RequestParam Long qId,
+                            @RequestParam long videoId,
+                            Model model){
+
+
+        QuestionnaireSummary questionnaireSummary = summaryService.getSummaryFor(qId,videoId);
+
+        model.addAttribute("qId", qId);
+        model.addAttribute("qId", qId);
+        model.addAttribute("videoId", videoId);
+        model.addAttribute("videoRatings", questionnaireSummary);
+        return "summary-one";
 
     }
 

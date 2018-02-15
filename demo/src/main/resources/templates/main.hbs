@@ -8,7 +8,7 @@
     <div class="tab-content">
         <div role="tabpanel" class="tab-pane active" id="home">{{> videos ratedVideos  action='view'}}</div>
         <div role="tabpanel" class="tab-pane" id="rate">{{> videos notRatedVideos  action='rate'}}</div>
-        <div role="tabpanel" class="tab-pane" id="summary">Summary</div>
+        <div role="tabpanel" class="tab-pane" id="summary">{{> videos allVideos  action='summary'}}</div>
     </div>
 
 {{/partial}}
