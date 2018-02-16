@@ -1,15 +1,14 @@
-<ul class="list-unstyled">
 {{#this}}
-<li class="media">
-    <div class="media-left media-bottom">
-        <a class="d-flex pr-3" href="{{resolveVideoActionLink  action qId uId id}}">
-                <img class="d-flex mr-3" src="..." alt="Generic placeholder image" style="width:80px">
-        </a>
+    <div class="media">
+        <div class="media-left media-bottom">
+            <a class="d-flex pr-3" href="{{resolveVideoActionLink  action qId uId id}}">
+                <img class="d-flex mr-3" src="/img/video-camera.svg" alt="Generic placeholder image" style="width:80px">
+            </a>
+        </div>
+        <div class="media-body">
+            <h5 class="mt-0 mb-1">{{title}}</h5>
+            {{description}}
+        </div>
     </div>
-    <div class="media-body">
-        <h5 class="mt-0 mb-1">{{title}}</h5>
-        {{description}}
-    </div>
-</li>
+    <hr/>
 {{/this}}
-</ul>
