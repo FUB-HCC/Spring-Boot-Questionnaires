@@ -75,7 +75,7 @@ public class QuestionnaireSummaryService {
         } else {
             int currentRatingIndex = 0;
             for (ChoiceRow row : rows) {
-                if (currentRatingIndex > ratingSummaries.size()) {
+                if (currentRatingIndex >=ratingSummaries.size()) {
                     summary.add(new ChoiceRowWithSummary(row, null));
                 } else {
                     final RatingSummary ratingSummaryForCurrentRow = ratingSummaries.get(currentRatingIndex);
