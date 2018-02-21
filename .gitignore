@@ -27,3 +27,4 @@ gradle/wrapper/gradle-wrapper.properties
 .directory
 # Database
 *.mv.db
+*.trace.db
