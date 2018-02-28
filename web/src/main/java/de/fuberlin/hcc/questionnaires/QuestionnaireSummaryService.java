@@ -1,6 +1,6 @@
 package de.fuberlin.hcc.questionnaires;
 
-;
+
 import de.fuberlin.hcc.questionnaires.model.*;
 import de.fuberlin.hcc.questionnaires.model.singlechoice.Choice;
 import de.fuberlin.hcc.questionnaires.model.singlechoice.SingleChoiceQuestion;
@@ -29,6 +29,7 @@ public class QuestionnaireSummaryService {
     public QuestionnaireSummaryService(RatingRepository ratingRepository,
                                        AnswerService answerService,
                                        QuestionnaireRepository questionnaireRepository) {
+
         this.ratingRepository = ratingRepository;
         this.answerService = answerService;
         this.questionnaireRepository = questionnaireRepository;
