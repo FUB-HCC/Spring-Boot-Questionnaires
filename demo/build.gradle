@@ -3,9 +3,7 @@ version '1.0-SNAPSHOT'
 
 buildscript {
     ext { springBootVersion = '1.5.6.RELEASE' }
-    repositories { mavenCentral()
-        maven{ url  'https://oss.sonatype.org/content/groups/public/'}
-       }
+    repositories { mavenCentral() }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
         classpath('se.transmode.gradle:gradle-docker:1.2')
@@ -23,7 +21,7 @@ repositories {
 }
 
 dependencies {
-    compile ('de.fu-berlin.mi.hcc.questionnaires:questionnaires_core')
+    compile 'de.fu-berlin.mi.hcc.questionnaires:questionnaires_core:1.0-SNAPSHOT'
     compile project (':web')
     compile("org.springframework.boot:spring-boot-starter-web") {
         exclude module: "spring-boot-starter-tomcat"
