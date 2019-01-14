@@ -1,4 +1,4 @@
-package de.fuberlin.hcc.questionnaires;
+package de.fuberlin.hcc.questionnaires.demo;
 
 import javax.persistence.*;
 

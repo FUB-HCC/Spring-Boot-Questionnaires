@@ -1,20 +1,26 @@
-group 'de.fu-berlin.mi.hcc.questionnaires'
-version '1.0'
-
-
-
 apply plugin: 'java'
 apply plugin: 'maven'
 apply plugin: 'signing'
+apply plugin: 'io.spring.dependency-management'
 
+group 'de.fu-berlin.mi.hcc.questionnaires'
+version '2.0.0'
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.springframework.boot:spring-boot-starter-jetty:2.1.0.RELEASE")
+
+    compile 'de.fu-berlin.mi.hcc.questionnaires:questionnaires_core:2.0.0'
+    compile 'pl.allegro.tech.boot:handlebars-spring-boot-starter:0.3.1'
+    compile 'com.github.jknack:handlebars-helpers:4.1.2'
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
 
 
 jar {
     baseName = 'questionnaires_web'
-    version = '0.0.1'
+    version = '2.0.0'
 }
 
 
@@ -75,23 +81,17 @@ uploadArchives {
 
                 developers {
                     developer {
-                        id 'msigal'
-                        name 'Maya Maria Seagal'
-                        email 'sigalmaria@gmail.com'
-                    }
-                    developer {
                         id 'mackeprm'
                         name 'Maximilian Mackeprang'
                         email 'maximilian.mackeprang@fu-berlin.de '
+                    }
+                    developer {
+                        id 'msigal'
+                        name 'Maya Maria Seagal'
+                        email 'sigalmaria@gmail.com'
                     }
                 }
             }
         }
     }
-}
-dependencies {
-    compile 'de.fu-berlin.mi.hcc.questionnaires:questionnaires_core:1.0'
-    compile 'pl.allegro.tech.boot:handlebars-spring-boot-starter:0.2.15'
-    compile 'com.github.jknack:handlebars-helpers:4.0.6'
-    testCompile group: 'junit', name: 'junit', version: '4.12'
 }

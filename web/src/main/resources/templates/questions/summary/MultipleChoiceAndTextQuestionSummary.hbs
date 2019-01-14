@@ -1,0 +1,15 @@
+<div>
+    <h5>{{questionText}}</h5>
+    <ul>
+        {{#each choiceAndTextSummaries}}
+            <li>
+                <p>{{label}}</p>
+                <ul>
+                    {{#each answerTexts}}
+                        <li><p>{{this}}</p></li>
+                    {{/each}}
+                </ul>
+            </li>
+        {{/each}}
+    </ul>
+</div>

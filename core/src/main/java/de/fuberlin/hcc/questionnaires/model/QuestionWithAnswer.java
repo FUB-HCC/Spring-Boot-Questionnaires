@@ -22,6 +22,7 @@ public abstract class QuestionWithAnswer {
     public long getId() {
         return id;
     }
+
     public abstract String getType();
 
     public abstract boolean isAnswered();

@@ -35,6 +35,11 @@ public class RatingBlockWithAnswer extends QuestionWithAnswer {
         return hasAnswer;
     }
 
+    @Override
+    public String getType() {
+        return this.getClass().getSimpleName();
+    }
+
     public List<ColumnLabel> getColumnLabels() {
         return columnLabels;
     }
@@ -42,11 +47,4 @@ public class RatingBlockWithAnswer extends QuestionWithAnswer {
     public List<ChoiceRowWithAnswer> getRows() {
         return rows;
     }
-
-    @Override
-    public String getType() {
-        return this.getClass().getSimpleName();
-    }
-
-
 }

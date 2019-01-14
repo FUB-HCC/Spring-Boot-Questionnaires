@@ -2,6 +2,12 @@ package de.fuberlin.hcc.questionnaires;
 
 
 import de.fuberlin.hcc.questionnaires.model.*;
+import de.fuberlin.hcc.questionnaires.model.multiplechoice.categories.MultipleChoiceCategoriesAnswer;
+import de.fuberlin.hcc.questionnaires.model.multiplechoice.categories.MultipleChoiceCategoriesQuestion;
+import de.fuberlin.hcc.questionnaires.model.multiplechoice.categories.MultipleChoiceCategoriesQuestionWithAnswer;
+import de.fuberlin.hcc.questionnaires.model.multiplechoice.choicewithtext.MultipleChoiceAndTextAnswer;
+import de.fuberlin.hcc.questionnaires.model.multiplechoice.choicewithtext.MultipleChoiceAndTextQuestion;
+import de.fuberlin.hcc.questionnaires.model.multiplechoice.choicewithtext.MultipleChoiceAndTextQuestionWithAnswer;
 import de.fuberlin.hcc.questionnaires.model.singlechoice.SingleChoiceAnswer;
 import de.fuberlin.hcc.questionnaires.model.singlechoice.SingleChoiceQuestion;
 import de.fuberlin.hcc.questionnaires.model.singlechoice.SingleChoiceQuestionWithAnswer;
@@ -23,7 +29,6 @@ public class QuestionnaireWithAnswersService {
 
     private final AnswerSessionRepository answerSessionRepository;
 
-
     @Autowired
     public QuestionnaireWithAnswersService(AnswerSessionRepository answerSessionRepository) {
         this.answerSessionRepository = answerSessionRepository;
@@ -36,7 +41,7 @@ public class QuestionnaireWithAnswersService {
 
     //TODO optimize/make nicer
     private QuestionnaireWithAnswers buildQuestionnairewithAnswers(Questionnaire questionnaire, AnswerSession oldAnswers) {
-        final QuestionnaireWithAnswers result = new QuestionnaireWithAnswers(questionnaire.getId());
+        final QuestionnaireWithAnswers result = new QuestionnaireWithAnswers(questionnaire.getId(), questionnaire.getHeading());
         final List<Answer> tmpAnswer;
         if (oldAnswers == null) {
             tmpAnswer = Collections.emptyList();
@@ -70,13 +75,25 @@ public class QuestionnaireWithAnswersService {
             if (answer == null || answer instanceof SingleChoiceAnswer) {
                 result = new SingleChoiceQuestionWithAnswer((SingleChoiceQuestion) question, (SingleChoiceAnswer) answer);
             } else {
-                throw new IllegalStateException("Answer with ID " + answer.getId() + ". Is of wrong type. Expected " + TextAnswer.class);
+                throw new IllegalStateException("Answer with ID " + answer.getId() + ". Is of wrong type. Expected " + SingleChoiceAnswer.class);
             }
         } else if (question instanceof RatingBlock) {
             if (answer == null || answer instanceof RatingBlockAnswer) {
                 result = new RatingBlockWithAnswer((RatingBlock) question, (RatingBlockAnswer) answer);
             } else {
-                throw new IllegalStateException("Answer with ID " + answer.getId() + ". Is of wrong type. Expected " + TextAnswer.class);
+                throw new IllegalStateException("Answer with ID " + answer.getId() + ". Is of wrong type. Expected " + RatingBlockAnswer.class);
+            }
+        } else if (question instanceof MultipleChoiceCategoriesQuestion) {
+            if (answer == null || answer instanceof MultipleChoiceCategoriesAnswer) {
+                result = new MultipleChoiceCategoriesQuestionWithAnswer((MultipleChoiceCategoriesQuestion) question, (MultipleChoiceCategoriesAnswer) answer);
+            } else {
+                throw new IllegalStateException("Answer with ID " + answer.getId() + ". Is of wrong type. Expected " + MultipleChoiceCategoriesAnswer.class);
+            }
+        } else if (question instanceof MultipleChoiceAndTextQuestion) {
+            if (answer == null || answer instanceof MultipleChoiceAndTextAnswer) {
+                result = new MultipleChoiceAndTextQuestionWithAnswer((MultipleChoiceAndTextQuestion) question, (MultipleChoiceAndTextAnswer) answer);
+            } else {
+                throw new IllegalStateException("Answer with ID " + answer.getId() + ". Is of wrong type. Expected " + MultipleChoiceAndTextQuestion.class);
             }
         } else {
             throw new IllegalStateException("Found Question with type: " + question.getClass() + ". Cannot build QuestionWithAnswer out of it");

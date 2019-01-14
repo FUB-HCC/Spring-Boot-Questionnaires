@@ -32,7 +32,7 @@ public class ChoiceRowWithAnswer {
     public List<ChoiceWithAnswer> getSelected(){
         List<ChoiceWithAnswer> choiceWithAnswers = getChoices();
 
-        return choiceWithAnswers.stream().filter(s->s.isSelected()).collect(Collectors.toList());
+        return choiceWithAnswers.stream().filter(ChoiceWithAnswer::isSelected).collect(Collectors.toList());
     }
 
 

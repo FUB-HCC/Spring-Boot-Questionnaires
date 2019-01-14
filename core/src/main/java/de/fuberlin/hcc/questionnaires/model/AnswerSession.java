@@ -8,16 +8,15 @@ import java.util.List;
  * An Answer Session is the Data/Metadata Object for a Questionnaire filled
  * out by a user.
  * It consists of
- *  - An ID
- *  - The reference to questionnaire that was filled out
- *  - A "contextKey" that determines, if a Session is appended or replaced
- *    by a newer session for the same questionnaire
- *  - A user id
- *  - A list of answers given to the questions in the questionaire
- *  - The submission timestamp of the answer session
- *  This class should be sufficient to pre-fill a questionaire rendering
- *  if a user has already answered a questionaire
- *
+ * - An ID
+ * - The reference to questionnaire that was filled out
+ * - A "contextKey" that determines, if a Session is appended or replaced
+ * by a newer session for the same questionnaire
+ * - A user id
+ * - A list of answers given to the questions in the questionaire
+ * - The submission timestamp of the answer session
+ * This class should be sufficient to pre-fill a questionaire rendering
+ * if a user has already answered a questionaire
  */
 
 @Entity

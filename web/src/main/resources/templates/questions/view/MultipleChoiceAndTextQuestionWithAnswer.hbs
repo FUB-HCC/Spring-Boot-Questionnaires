@@ -1,0 +1,22 @@
+<div>
+    {{#assign "questionId"}}{{this.id}}{{/assign}}
+    {{#assign "questionType"}}{{this.type}}{{/assign}}
+
+    <h5>{{questionText}}</h5>
+    {{#if additionalInfo}}
+        <p class="sublabel">{{additionalInfo}}</p>
+    {{/if}}
+
+    {{#if answered}}
+        {{#each rows as |row|}}
+            {{#if row.selected}}
+                <div class="row">
+                    <p>{{row.label}}:</p>
+                    <p>{{row.answerText}}</p>
+                </div>
+            {{/if}}
+        {{/each}}
+    {{else}}
+        <p>No answer given.</p>
+    {{/if}}
+</div>

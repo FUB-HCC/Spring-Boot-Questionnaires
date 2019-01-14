@@ -1,0 +1,35 @@
+<div class="form-group" id="{{stringFormat "%s-all-categories" this.id}}">
+    {{#assign "questionId"}}{{this.id}}{{/assign}}
+    {{#assign "questionType"}}{{this.type}}{{/assign}}
+
+    <h5>{{questionText}}</h5>
+    {{#if additionalInfo}}
+        <p class="sublabel">{{additionalInfo}}</p>
+    {{/if}}
+
+    <div class="category-container">
+        <div class="row">
+            {{#each categories as |category|}}
+                {{#even @index}}
+                    </div>
+                    <div class="row">
+                {{/even}}
+                <div class="col">
+                    <p class="category-heading">{{category.label}}:</p>
+                    {{#each choices as |choice|}}
+                    <div class="form-check">
+                        <label class="form-check-label">
+                        <input class="form-check-input"
+                               type="checkbox"
+                                {{checked choice.selected true}}
+                               name="{{stringFormat "answer-%s-%s-%s" questionId questionType category.id}}"
+                               value="{{choice.id}}">
+                        <span>{{choice.label}}</span>
+                        </label>
+                    </div>
+                    {{/each}}
+                </div>
+            {{/each}}
+        </div>
+    </div>
+</div>

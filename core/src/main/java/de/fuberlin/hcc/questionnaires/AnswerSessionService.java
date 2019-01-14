@@ -17,16 +17,22 @@ public class AnswerSessionService {
         this.repository = repository;
     }
 
-    public  AnswerSession saveAnswers(long questionnaireId, long userId, long contextKey, List<Answer> newAnswers) {
+    public AnswerSession saveAnswers(long questionnaireId, long userId, long contextKey, List<Answer> newAnswers) {
         final AnswerSession oldAnswers = repository.findByQuestionnaireIdAndUserIdAndContextKey(questionnaireId, userId, contextKey);
         final AnswerSession toSave = new AnswerSession(questionnaireId, userId, contextKey, newAnswers);
         if (oldAnswers != null) {
-            repository.delete(oldAnswers.getId());
+            //TODO test this!
+            repository.delete(oldAnswers);
             toSave.setId(oldAnswers.getId());
         }
-        AnswerSession answer = repository.save(toSave);
-        return answer;
+        return repository.save(toSave);
     }
 
+    public long countByUserIdAndQuestionnaireId(long userId, long questionnaireId) {
+        return repository.countByUserIdAndQuestionnaireId(userId, questionnaireId);
+    }
 
+    public long countByContextKeyAndQuestionnaireId(long contextKey, long questionnaireId) {
+        return repository.countByContextKeyAndQuestionnaireId(contextKey, questionnaireId);
+    }
 }

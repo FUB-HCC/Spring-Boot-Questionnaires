@@ -13,16 +13,10 @@
                 <li class="col-lg-12">
                     <div class="input-group">
                         <label>
-                            {{#if selected}}
-                                <input type="radio"
-                                       name="{{stringFormat "answer-%s-%s" questionId questionType}}"
-                                       checked="checked"
-                                       value="{{id}}">
-                            {{else}}
-                                <input type="radio"
-                                       name="{{stringFormat "answer-%s-%s" questionId questionType}}"
-                                       value="{{id}}">
-                            {{/if}}
+                            <input type="radio"
+                                   name="{{stringFormat "answer-%s-%s" questionId questionType}}"
+                                {{checked selected true}}
+                                   value="{{id}}">
                             {{label}}</label>
                     </div>
                 </li>

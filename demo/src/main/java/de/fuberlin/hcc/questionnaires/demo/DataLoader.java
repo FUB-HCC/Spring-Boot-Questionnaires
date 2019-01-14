@@ -1,5 +1,6 @@
-package de.fuberlin.hcc.questionnaires;
+package de.fuberlin.hcc.questionnaires.demo;
 
+import de.fuberlin.hcc.questionnaires.QuestionnaireRepository;
 import de.fuberlin.hcc.questionnaires.model.Question;
 import de.fuberlin.hcc.questionnaires.model.Questionnaire;
 import de.fuberlin.hcc.questionnaires.model.singlechoice.SingleChoiceQuestion;

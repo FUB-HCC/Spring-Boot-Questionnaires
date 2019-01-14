@@ -12,12 +12,20 @@ public class SingleChoiceSummary extends QuestionSummary {
         this.ratingSummary = ratingSummary;
     }
 
-    public RatingSummary getRatingSummary() {
-        return ratingSummary;
+    public String getValueLabel() {
+        return ratingSummary.getValueLabel();
+    }
+
+    public int getNumRating() {
+        return ratingSummary.getNumRating();
     }
 
     @Override
     public String getType() {
         return this.getClass().getSimpleName();
+    }
+
+    public RatingSummary getRatingSummary() {
+        return ratingSummary;
     }
 }

@@ -1,7 +1,6 @@
 package de.fuberlin.hcc.questionnaires;
 
 
-
 import de.fuberlin.hcc.questionnaires.model.Answer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +19,7 @@ public class AnswerService {
     }
 
 
-    public List<Answer> getAnswersByQuestionIdAndContextId(long qId, long contextId){
-        return repository.getAnswersByQuestionIdAndContextId(qId,contextId);
+    public List<Answer> getAnswersByQuestionIdAndContextId(long qId, long contextId) {
+        return repository.getAnswersByQuestionIdAndContextId(qId, contextId);
     }
 }

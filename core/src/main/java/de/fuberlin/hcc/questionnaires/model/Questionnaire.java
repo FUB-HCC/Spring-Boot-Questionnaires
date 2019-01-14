@@ -3,13 +3,12 @@ package de.fuberlin.hcc.questionnaires.model;
 import org.hibernate.annotations.SortNatural;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-
-
-public class Questionnaire {
+public class Questionnaire implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,9 +21,8 @@ public class Questionnaire {
     @OrderBy("question_order ASC")
     private List<Question> questions = new ArrayList<>();
 
-
-
-
+    @Column(name = "heading", length = 2_500, nullable = true)
+    private String heading;
 
     public void add(Question question) {
         question.setOrder(questions.size() + 1);
@@ -37,6 +35,14 @@ public class Questionnaire {
 
     public int size() {
         return questions.size();
+    }
+
+    public void setHeading(String heading) {
+        this.heading = heading;
+    }
+
+    public String getHeading() {
+        return heading;
     }
 
     public List<Question> getQuestions() {

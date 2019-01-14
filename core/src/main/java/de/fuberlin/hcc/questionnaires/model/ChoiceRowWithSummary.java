@@ -12,32 +12,24 @@ public class ChoiceRowWithSummary {
         this.ratingSummary = ratingSummary;
     }
 
-    public RatingSummary getRatingSummary() {
-        return ratingSummary;
-    }
-
     public String getAvgRating() {
         if (ratingSummary != null) {
             return ratingSummary.getValueLabel();
         }
-        return "-";
+        return "(No Ratings)";
     }
 
-    public Integer getNumRating() {
+    public int getNumRating() {
         if (ratingSummary != null) {
             return ratingSummary.getNumRating();
         }
         return 0;
     }
 
-    public ChoiceRow getChoiceRow() {
-        return choiceRow;
-    }
-
     public String getRowLabel() {
         if (choiceRow != null) {
             return choiceRow.getLabel();
         }
-        return "";
+        return "no label";
     }
 }

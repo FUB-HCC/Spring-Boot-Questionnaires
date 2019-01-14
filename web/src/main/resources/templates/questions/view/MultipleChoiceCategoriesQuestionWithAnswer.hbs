@@ -1,0 +1,37 @@
+<div>
+    {{#assign "questionId"}}{{this.id}}{{/assign}}
+    {{#assign "questionType"}}{{this.type}}{{/assign}}
+
+    <h5>{{questionText}}</h5>
+    {{#if additionalInfo}}
+        <p class="sublabel">{{additionalInfo}}</p>
+    {{/if}}
+
+    <!-- TODO -->
+    {{#if answered}}
+        {{#each categories as |category|}}
+            {{#if selected }}
+                <div class="category" id="{{stringFormat "collapse-%s-%s" questionId category.id}}">
+                    <h6>{{category.label}}</h6>
+                    {{#each selected as |choice|}}
+                        <div class="form-check">
+                            <label class="form-check-label">
+
+                                <input class="form-check-input"
+                                       type="checkbox"
+                                       checked
+                                       disabled
+                                       name="{{stringFormat "answer-%s-%s-%s" questionId questionType category.id}}"
+                                       value="{{choice.id}}">
+                                {{choice.label}}
+
+                            </label>
+                        </div>
+                    {{/each}}
+                </div>
+            {{/if}}
+        {{/each}}
+    {{else}}
+        <p>No answer given.</p>
+    {{/if}}
+</div>

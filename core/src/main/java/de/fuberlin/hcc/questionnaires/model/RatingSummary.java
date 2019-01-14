@@ -6,20 +6,21 @@ import java.util.Map;
 
 public class RatingSummary {
 
-
     private long questionId;
-    private int avg;
-    private String label;
+    private int sum;
     private int numRating;
-    private Map<Integer, String> ratingValues;
+    private Map<Integer, String> ratingLabels;
 
-    public RatingSummary(long questionId, int avg, String label, int numRating) {
+    public RatingSummary(long questionId) {
         this.questionId = questionId;
-        this.avg = avg;
-        this.label = label;
-        this.numRating = numRating;
+        this.sum = 0;
+        this.numRating = 0;
     }
 
+    public void addValue(int value) {
+        this.sum += value;
+        this.numRating++;
+    }
 
     public long getQuestionId() {
         return questionId;
@@ -30,43 +31,30 @@ public class RatingSummary {
     }
 
 
+    public int getAvg() {
+        if (numRating > 0) {
+            return (sum / numRating);
+        } else {
+            return 0;
+        }
+    }
+
     public int getNumRating() {
         return numRating;
     }
 
-    public void setNumRating(int numRating) {
-        this.numRating = numRating;
-    }
-
-
-    public int getAvg() {
-        return avg;
-    }
-
-    public void setAvg(int avg) {
-        this.avg = avg;
-    }
-
-    public String getLabel() {
-        return label;
-    }
-
-    public void setLabel(String label) {
-        this.label = label;
-    }
-
-
-    public void setRatingValues(Map<Integer, String> ratingsValues) {
-        this.ratingValues = ratingsValues;
+    public void setRatingLabels(Map<Integer, String> ratingsValues) {
+        this.ratingLabels = ratingsValues;
     }
 
     public String getValueLabel() {
-        String value = ratingValues.get(avg);
-        if (value == null || value == "") {
-            value = " - ";
+        String value = null;
+        if (ratingLabels != null) {
+            value = ratingLabels.get(getAvg());
+        }
+        if (value == null || value.equals("")) {
+            value = "No Ratings";
         }
         return value;
     }
-
-
 }

@@ -22,19 +22,11 @@
                 <th scope="row" class="table-row-title">{{row.rowLabel}}</th>
                 {{#each choices as |choice|}}
                     <td>
-                        <!-- TODO label -->
-                        {{#if choice.selected}}
-                            <input type="radio"
-                                   name="{{stringFormat "answer-%s-%s-%s" questionId questionType row.id}}"
-                                   value="{{id}}"
-                                   checked="checked"
-                                   autocomplete="off">
-                        {{else}}
-                            <input type="radio"
-                                   name="{{stringFormat "answer-%s-%s-%s" questionId questionType row.id}}"
-                                   value="{{id}}"
-                                   autocomplete="off">
-                        {{/if}}
+                        <input type="radio"
+                               name="{{stringFormat "answer-%s-%s-%s" questionId questionType row.id}}"
+                               value="{{id}}"
+                            {{checked choice.selected true}}
+                               autocomplete="off">
                     </td>
                 {{/each}}
             </tr>

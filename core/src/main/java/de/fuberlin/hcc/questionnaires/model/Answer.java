@@ -14,11 +14,11 @@ import javax.validation.constraints.NotNull;
         classes = {
                 @ConstructorResult(
                         targetClass = RatingSummary.class,
-                        columns  = {
-                                @ColumnResult(name = "qId", type =Long.class),
+                        columns = {
+                                @ColumnResult(name = "qId", type = Long.class),
                                 @ColumnResult(name = "avgRating", type = Integer.class),
-                                @ColumnResult(name="label", type =String.class),
-                                @ColumnResult(name="numRating", type =Integer.class)
+                                @ColumnResult(name = "label", type = String.class),
+                                @ColumnResult(name = "numRating", type = Integer.class)
                         })
         })
 
@@ -32,6 +32,7 @@ public abstract class Answer implements Comparable<Answer> {
     @Column(name = "question_id", nullable = false)
     private long questionId;
 
+    //TODO is this empty constructor needed?
     public Answer() {
     }
 

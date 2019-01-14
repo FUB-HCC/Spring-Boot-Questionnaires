@@ -1,6 +1,8 @@
-package de.fuberlin.hcc.questionnaires;
+package de.fuberlin.hcc.questionnaires.demo;
 
 
+import de.fuberlin.hcc.questionnaires.*;
+import de.fuberlin.hcc.questionnaires.model.Questionnaire;
 import de.fuberlin.hcc.questionnaires.model.QuestionnaireSummary;
 import de.fuberlin.hcc.questionnaires.model.QuestionnaireWithAnswers;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,28 +15,29 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 @Controller
 public class VideosController {
 
 
-    private EditService editService;
-    private QuestionnaireSummaryService summaryService;
-    private QuestionnaireWithAnswersService  questionnaireWithAnswersService;
-    private ViewService viewService;
-    private VideoRepository videoRepository;
+    private final EditService editService;
+    private final QuestionnaireSummaryService summaryService;
+    private final QuestionnaireWithAnswersService questionnaireWithAnswersService;
+    private final QuestionnaireRepository questionnaireRepository;
+    private final ViewService viewService;
+    private final VideoRepository videoRepository;
 
     @Autowired
     public VideosController(QuestionnaireWithAnswersService questionnaireService,
                             EditService editService,
                             QuestionnaireSummaryService summaryService,
-                            ViewService viewService,
-                            VideoRepository videoRepository){
+                            QuestionnaireRepository questionnaireRepository, ViewService viewService,
+                            VideoRepository videoRepository) {
         this.questionnaireWithAnswersService = questionnaireService;
         this.editService = editService;
         this.summaryService = summaryService;
+        this.questionnaireRepository = questionnaireRepository;
         this.viewService = viewService;
         this.videoRepository = videoRepository;
 
@@ -42,23 +45,23 @@ public class VideosController {
 
     @GetMapping("/")
     public String showVideos(@RequestParam(value = "uId") Long userId,
-                             @RequestParam(value="qId") Long questionnaireId, Model model ){
+                             @RequestParam(value = "qId") Long questionnaireId, Model model) {
 
-        List<Video> ratedVideos = (List<Video> )videoRepository.findRatedVideos(questionnaireId,userId);
+        List<Video> ratedVideos = (List<Video>) videoRepository.findRatedVideos(questionnaireId, userId);
         model.addAttribute("ratedVideos", ratedVideos);
         List<Video> allVideos = (List<Video>) videoRepository.findAll();
         model.addAttribute("allVideos", allVideos);
 
-      if(ratedVideos == null){
-          model.addAttribute("notRatedVideos", videoRepository.findAll());
-      }else {
-          List<Long> ratedsVideosIds = ratedVideos.stream().map(v -> v.getId()).collect(Collectors.toList());
-          model.addAttribute("notRatedVideos", videoRepository.findNotRatedVideos(ratedsVideosIds));
-      }
-        model.addAttribute("uId",userId);
+        if (ratedVideos == null) {
+            model.addAttribute("notRatedVideos", videoRepository.findAll());
+        } else {
+            List<Long> ratedsVideosIds = ratedVideos.stream().map(v -> v.getId()).collect(Collectors.toList());
+            model.addAttribute("notRatedVideos", videoRepository.findNotRatedVideos(ratedsVideosIds));
+        }
+        model.addAttribute("uId", userId);
         model.addAttribute("qId", questionnaireId);
 
-        return  "main";
+        return "main";
     }
 
 
@@ -66,9 +69,9 @@ public class VideosController {
     public String rateVideo(@RequestParam Long qId,
                             @RequestParam Long uId,
                             @RequestParam long videoId,
-                             Model model){
-        QuestionnaireWithAnswers questionnaireWithAnswers=
-                viewService.getQuestionnaireWithAnswers(qId,videoId,uId);
+                            Model model) {
+        QuestionnaireWithAnswers questionnaireWithAnswers =
+                viewService.getQuestionnaireWithAnswers(qId, videoId, uId);
         model.addAttribute("questionnaire", questionnaireWithAnswers);
         model.addAttribute("qId", qId);
         model.addAttribute("uId", uId);
@@ -81,9 +84,9 @@ public class VideosController {
     public String viewVideo(@RequestParam Long qId,
                             @RequestParam Long uId,
                             @RequestParam long videoId,
-                            Model model){
-        QuestionnaireWithAnswers questionnaireWithAnswers=
-                viewService.getQuestionnaireWithAnswers(qId,videoId,uId);
+                            Model model) {
+        QuestionnaireWithAnswers questionnaireWithAnswers =
+                viewService.getQuestionnaireWithAnswers(qId, videoId, uId);
         model.addAttribute("questionnaire", questionnaireWithAnswers);
         model.addAttribute("qId", qId);
         model.addAttribute("uId", uId);
@@ -95,11 +98,10 @@ public class VideosController {
 
     @RequestMapping("/summary")
     public String viewVideoSummary(@RequestParam Long qId,
-                            @RequestParam long videoId,
-                            Model model){
-
-
-        QuestionnaireSummary questionnaireSummary = summaryService.getSummaryFor(qId,videoId);
+                                   @RequestParam long videoId,
+                                   Model model) {
+        Questionnaire questionnaire = questionnaireRepository.findById(qId).get();
+        QuestionnaireSummary questionnaireSummary = summaryService.getSummaryFor(questionnaire, videoId);
 
         model.addAttribute("qId", qId);
         model.addAttribute("qId", qId);
@@ -113,23 +115,21 @@ public class VideosController {
     @PostMapping("/rate")
     @ResponseBody
     public ResponseEntity rateIdea(HttpServletRequest request) {
-        try{
+        try {
 
 
             final long qId = Long.parseLong(request.getParameter("qId"));
-            final long videoId =  Long.parseLong(request.getParameter("videoId"));
-            final long uId =  Long.parseLong(request.getParameter("uId"));
-            editService.update(qId, uId, videoId,request);
+            final long videoId = Long.parseLong(request.getParameter("videoId"));
+            final long uId = Long.parseLong(request.getParameter("uId"));
+            editService.update(qId, uId, videoId, request);
             final HttpHeaders headers = new HttpHeaders();
-            headers.add("Location", "/?qId=" +qId+"&uId="+uId);
+            headers.add("Location", "/?qId=" + qId + "&uId=" + uId);
             return new ResponseEntity<String>(headers, HttpStatus.FOUND);
         } catch (Exception e) {
 
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }
     }
-
-
 
 
 }

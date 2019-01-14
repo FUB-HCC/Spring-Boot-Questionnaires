@@ -1,4 +1,4 @@
-package de.fuberlin.hcc.questionnaires;
+package de.fuberlin.hcc.questionnaires.demo;
 
 
 import pl.allegro.tech.boot.autoconfigure.handlebars.HandlebarsHelper;

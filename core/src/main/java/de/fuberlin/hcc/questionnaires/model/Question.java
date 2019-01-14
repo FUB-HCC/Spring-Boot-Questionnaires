@@ -14,9 +14,6 @@ import javax.validation.constraints.Size;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "question_type",
         discriminatorType = DiscriminatorType.STRING)
-
-
-
 public abstract class Question implements Comparable<Question> {
     private static final int BEFORE = -1;
     private static final int AFTER = 1;
@@ -39,23 +36,10 @@ public abstract class Question implements Comparable<Question> {
     @Size(max = 2048)
     @Column(name = "additional_info", length = 2048)
     private String additionalInfo;
-/*
-    @NotNull
-    @Column(name = "question_type")
-    private String questionType;
-*/
 
     public Question() {
     }
-/*
-    public String  getQuestionType(){
-        return questionType;
-    }
-    public void setQuestionType(String quastionType ){
-       this.questionType = quastionType;
-    }
 
-   */
     public Question(String questionText) {
         this.questionText = questionText;
     }
