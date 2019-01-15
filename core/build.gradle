@@ -4,6 +4,7 @@ apply plugin: 'maven'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
+/* TODO https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/html/#managing-dependencies-using-in-isolation */
 
 group 'de.fu-berlin.mi.hcc.questionnaires'
 version '2.0.0'

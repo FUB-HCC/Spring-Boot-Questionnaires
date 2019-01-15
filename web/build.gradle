@@ -45,6 +45,7 @@ repositories {
 signing {
     sign configurations.archives
 }
+
 uploadArchives {
     repositories {
         mavenDeployer {
